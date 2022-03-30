@@ -13,9 +13,11 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
 import { blue } from "@mui/material/colors";
-const colorB = blue[50];
+import { useNavigate } from "react-router-dom";
+
 
 export const NavBar = () => {
+  const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -51,6 +53,7 @@ export const NavBar = () => {
               {" "}
               <NavLink to="/register">Register</NavLink>
             </Button>
+           
           </Stack>
           <Button
             sx={{ color: "white" }}
@@ -73,12 +76,15 @@ export const NavBar = () => {
               "aria-labelledby": "basic-button",
             }}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            
+            <MenuItem onClick={() => navigate('profile')}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <MenuItem >Log Out</MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
     </Box>
   );
 };
+
+

@@ -11,9 +11,15 @@ import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { NavBar } from './components/NavBar';
 import { Register } from './pages/Register';
+import Profile from './pages/Profile';
+import {UserContext} from "./components/UserContext"
+
+
+const futurename = "Oliveir"
 
 function App() {
   return (
+    <UserContext.Provider value={futurename}>
     <div className="App">
         <NavBar/>
       <Routes>
@@ -23,11 +29,13 @@ function App() {
       <Route path="form" element={<MuiBreakPoints />}>
       </Route>
       <Route path="register" element={<Register />}/>
+      <Route path="profile" element={<Profile />}/>
     </Routes>
    
     {/* <MuiTextField/> */}
 
     </div>
+    </UserContext.Provider>
   );
 }
 
