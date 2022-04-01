@@ -13,6 +13,8 @@ import { NavBar } from './components/NavBar';
 import { Register } from './pages/Register';
 import Profile from './pages/Profile';
 import {UserContext} from "./components/UserContext"
+import FireBaseSignup from './components/FireBaseSignup';
+import FireBaseLogin from './components/FireBaseLogin';
 
 
 const futurename = "Oliveir"
@@ -30,6 +32,8 @@ function App() {
       </Route>
       <Route path="register" element={<Register />}/>
       <Route path="profile" element={<Profile />}/>
+      <Route path="signup" element={<FireBaseSignup />}/>
+      <Route path="login" element={<FireBaseLogin/>}/>
     </Routes>
    
     {/* <MuiTextField/> */}
