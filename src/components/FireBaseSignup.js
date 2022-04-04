@@ -2,9 +2,11 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import { Container, Box, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import { useRef, useState } from "react";
+
 
 //styles
 const useStyles = makeStyles({
@@ -23,43 +25,96 @@ const useStyles = makeStyles({
   },
 });
 
-//item
-
 //JSX
 const FireBaseSignup = () => {
   const classes = useStyles();
+  //refs
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e) {
+    //  alert("ehehe")
+    e.preventDefault();
+
+  }
   return (
     <div>
       <Container>
-        <Box className={classes.formContainer}>
-          <Typography
-            padding={1}
-            color="primary"
-            variant="h6"
-            textAlign="center"
-          >
-            Signup
-          </Typography>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <Typography> Your details</Typography>
-            </Grid>
+       
+        <form onSubmit={handleSubmit}>
+          <Box className={classes.formContainer}>
+            <Typography
+              padding={1}
+              color="primary"
+              variant="h6"
+              textAlign="center"
+            >
+              Signup
+               {error && <h2>{error}</h2>}
+            
+            </Typography>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <Typography> Your details</Typography>
+              </Grid>
 
-            <Grid item xs={12}>
-            <TextField  label="Email" variant="outlined" fullWidth />
-            </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  label="Email"
+                  id="email"
+                  variant="outlined"
+                  fullWidth
+                  inputRef={emailRef}
+                />
+              </Grid>
 
-            <Grid item xs={12}>
-            <TextField  label="Password" variant="outlined" fullWidth type="password"/>
-            </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="password"
+                  label="Password"
+                  variant="outlined"
+                  fullWidth
+                  type="password"
+                  inputRef={passwordRef}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="password-confirm"
+                  label="Password Confirmation"
+                  variant="outlined"
+                  fullWidth
+                  type="password"
+                  inputRef={passwordConfirmRef}
+                />
+              </Grid>
 
-
-            <Grid item xs={12}>
-            <Button type="submit "variant="contained" fullWidth>Submit</Button>
+              <Grid item xs={12}>
+                <Button
+                  disabled={loading}
+                  type="submit "
+                  variant="contained"
+                  fullWidth
+                >
+                  Sign Up
+                </Button>
+              </Grid>
             </Grid>
-          </Grid>
-          <Typography>Already have an Account? <Link to="/login" style={{ color: '#0080da', textDecoration: "none" }}>Log In</Link></Typography>
-        </Box>
+            <Typography>
+              Already have an Account?{" "}
+              <Link
+                to="/login"
+                style={{ color: "#0080da", textDecoration: "none" }}
+              >
+                Log In
+              </Link>
+            </Typography>
+          </Box>
+        </form>
       </Container>
     </div>
   );

@@ -58,7 +58,7 @@ const FireBaseLogin = () => {
             <Button type="submit "variant="contained" fullWidth>Submit</Button>
             </Grid>
           </Grid>
-          <Typography>Don't have an Account? <Link to="signup" style={{ color: '#0080da', textDecoration: "none" }}>Sign up here</Link></Typography>
+          <Typography>Don't have an Account? <Link to="/signup" style={{ color: '#0080da', textDecoration: "none" }}>Sign up here</Link></Typography>
         </Box>
       </Container>
     </div>
